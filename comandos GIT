@@ -1,0 +1,13 @@
+* git clone (http:\\url repositorio)
+
+* 1- git pull (actualiza repositorio)
+
+* 2- git add . (agrega todo el contenido del repositorio)
+
+* 3- git commit -m "Comentario"
+
+* 4- git commit nombre_archivo\carpeta
+
+* 5- git push (actualiza los cambios en el repositorio)
+
+*  git push origin master (enviar mi trabajo al servidor)
