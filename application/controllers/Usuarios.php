@@ -24,9 +24,9 @@ class Usuarios extends CI_Controller {
 
 		}
 
-		$this->load->view('templates/header');
+		/*$this->load->view('templates/header');
 		$this->load->view('usuarios/login', $data);
-		$this->load->view('templates/footer');
+		$this->load->view('templates/footer');*/
 
 
 	}

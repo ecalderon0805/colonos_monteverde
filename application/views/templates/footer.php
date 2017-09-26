@@ -1,7 +1,7 @@
  </div>
    <footer class="fixed-bottom">
    	 <div class="row" align="center">
-   	  <!--<img src="<?php echo base_url(); ?>/assets/images/logo.png" alt="logo monteverde">-->
+   	  <img src="<?php echo base_url(); ?>/assets/images/logo.png" alt="logo monteverde">
    	 
    	  <p class="text-center">
 		Carretera a Morelia No 550

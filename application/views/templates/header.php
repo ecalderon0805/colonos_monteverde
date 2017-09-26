@@ -17,8 +17,13 @@
     <ul class="nav navbar-nav">
      <li><a href="<?php echo base_url(); ?>">Inicio</a></li>
      <li><a href="<?php echo base_url(); ?>news">Noticias</a></li>
-   </ul>
+  </ul>
    <ul class="nav navbar-nav navbar-right">
+    <li><a href="">Usuarios</a></li>
+     <li><a href="">Personas fisicas</a></li>
+     <li><a href="">Personas morales</a></li>
+     <li><a href="">Propiedades</a></li>
+     <li><a href="">Chat</a></li>
     <li><a href="<?php echo base_url(); ?>usuarios/login">Login</a></li>
   </ul>
 </div>
