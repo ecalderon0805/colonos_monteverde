@@ -7,6 +7,6 @@
  		$this->load->view('templates/header');
  		$this->load->view('cotos/index', $data);
  		$this->load->view('templates/footer');
-
+                
  	}
  }

@@ -10,7 +10,7 @@
       <div class="form-group">
        <input type="password" name="password" class="form-control" placeholder="Ingrese password" required autofocus>
       </div>
-      <button type="submit" class="btn btn-primary btn-block">Login</button>
+      <button id="btn_login" type="submit" class="btn btn-info btn-block">Login</button>
     </div>
    </div>
 <?php echo form_close(); ?>
