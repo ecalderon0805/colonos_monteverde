@@ -8,8 +8,9 @@
         <div class="form-group">
             <label>Nombre</label>
             <select name="id_persona_fisica" class="form-control" required autofocus>
-                <?php foreach ($persona_fisica as $person): ?>
-                    <option value="<?php echo $person['id_persona_fisica'] ?>"><?php echo $persona['nombre']; ?></option>
+                 <option selected disabled hidden style='display: none' value='' ></option>
+                <?php foreach ($personas_fisicas as $personas): ?>
+                    <option value="<?php echo $personas['id_persona_fisica'] ?>"><?php echo $personas['nombre'].' '.$personas['apellido_paterno'].' '.$personas['apellido_materno']; ?></option>
                 <?php endforeach; ?>
             </select>
         </div>
@@ -22,13 +23,14 @@
             <input type="password" class="form-control" name="password" placeholder="Password" required autofocus>
         </div>
         <div class="form-group">
+            <?php echo form_error('password'); ?>
             <label>Confirmar password:</label>
             <input type="password" class="form-control" name="password2" placeholder="Confirmar password" required autofocus>
         </div>
         <div class="form-group">
             <div class="form-check">
                 <label class="form-check-label">
-                    <input type="checkbox" checked="false" name="es_admin" class="form-check-input">
+                    <input type="checkbox" unchecked name="es_admin" value="1" class="form-check-input">
                     Es Administrador?
                 </label>
             </div>

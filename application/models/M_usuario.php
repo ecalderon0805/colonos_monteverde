@@ -2,12 +2,18 @@
 
 class M_usuario extends CI_Model {
 
-    public function registro($enc_password) {
-
+    public function registrar($enc_password) {
+        
+        $es_admin = $this->input->post('es_admin');
+        
+        
+         $es_admin = is_null($es_admin) ? 0 : 1;
+        
         $data = array(
+            'id_persona_fisica' => $this->input->post('id_persona_fisica'),
             'usuario' => $this->input->post('usuario'),
             'password' => $enc_password,
-            'id_persona_fisica' => $this->input->post('id_persona_fisica')
+            'es_admin' => $es_admin
         );
         return $this->db->insert('usuarios', $data);
     }
@@ -18,15 +24,31 @@ class M_usuario extends CI_Model {
 
         $result = $this->db->get('usuarios');
         if ($result->num_rows() == 1) {
-            return $result->row(0)->id;
+            return $result->row(0)->id_usuario;
         } else {
             return false;
         }
     }
 
+    public function get_usuario($usuario, $password) {
+        $this->db->where('usuario', $usuario);
+        $this->db->where('password', $password);
+
+        $query = $this->db->get('usuarios');
+
+        return $query->row_array();
+    }
+    
+    public function get_personas_fisicas(){
+        $query = $this->db->get('personas_fisicas');
+        return $query->result_array();
+    }
+
     public function check_usuario_exists($usuario) {
-        $query = $this->db->get_where('usuarios', array('usuario' => $usuario));
-        if (empty($query->row_array())) {
+        $this->db->where('usuario', $usuario);
+        
+        $result = $this->db->get('usuarios');
+        if ($result->num_rows() == 1) {
             return true;
         } else {
             return false;

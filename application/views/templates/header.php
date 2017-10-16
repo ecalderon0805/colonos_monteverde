@@ -21,35 +21,64 @@
                             <li><a href="<?php echo base_url(); ?>news">Noticias</a></li>
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="">Personas fisicas</a></li>
-                            <li><a href="">Personas morales</a></li>
-                            <li><a href="">Propiedades</a></li>
-                            <li><a href="">Chat</a></li>
-                            <li><a href="<?php echo base_url(); ?>usuarios/registro">Usuarios</a></li>
-                            <li><a href="<?php echo base_url(); ?>usuarios/login">Login</a></li>
+                            <?php if ($this->session->userdata('logged_in') && $this->session->userdata('es_admin') == 1) : ?>
+                                <li><a href="">Personas fisicas</a></li>
+                                <li><a href="">Personas morales</a></li>
+                                <li><a href="">Propiedades</a></li>
+                                <li><a href="">Chat</a></li>
+                                <li><a href="<?php echo base_url(); ?>registro">Usuarios</a></li>
+                                <li><a href="<?php echo base_url(); ?>usuarios/logout">Salir</a></li>
+                            <?php endif; ?>
+                            <?php if ($this->session->userdata('logged_in') && $this->session->userdata('es_admin') == 0) : ?>
+                                <li><a href="">Chat</a></li>
+                                <li><a href="<?php echo base_url(); ?>usuarios/logout">Salir</a></li>
+                            <?php endif; ?>
+                            <?php if (!$this->session->userdata('logged_in')) : ?>
+                                <li><a href="<?php echo base_url(); ?>usuarios/login">Iniciar sesión</a></li>
+                            <?php endif; ?>
                         </ul>
                     </div>
                 </div>
             </nav>
             <div class="container">
 
-                <?php if($this->session->flashdata('user_registered')) : ?>
-                    <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?>
+                <?php if ($this->session->flashdata('user_registered')) : ?>
+                    <?php
+                    echo '<p class="alert alert-success text-center">' . $this->session->flashdata('user_registered') . '</p>';
+                    $self = $_SERVER['PHP_SELF'];
+                    header("refresh:2; url=$self");
+                    ?>
                 <?php endif; ?>
 
                 <?php if ($this->session->flashdata('login_failed')) : ?>
                     <?php
                     echo '<p class="alert alert-danger text-center">' . $this->session->flashdata('login_failed') . '</p>';
-
                     $self = $_SERVER['PHP_SELF'];
                     header("refresh:2; url=$self");
                     ?>
                 <?php endif; ?>
 
                 <?php if ($this->session->flashdata('user_loggedin')) : ?>
-                    <?php echo '<p class="alert alert-success text-center">' . $this->session->flashdata('user_loggedin') . '</p>'; ?>
+                    <?php
+                    echo '<p class="alert alert-success text-center">' . $this->session->flashdata('user_loggedin') . '</p>';
+                    $self = $_SERVER['PHP_SELF'];
+                    header("refresh:2; url=$self");
+                    ?>
                 <?php endif; ?>
 
                 <?php if ($this->session->flashdata('user_loggedout')) : ?>
-                    <?php echo '<p class="alert alert-success text-center">' . $this->session->flashdata('user_loggedout') . '</p>'; ?>
-                <?php endif; ?>
+                    <?php
+                    echo '<p class="alert alert-success text-center">' . $this->session->flashdata('user_loggedout') . '</p>';
+                    $self = $_SERVER['PHP_SELF'];
+                    header("refresh:2; url=$self");
+                    ?>
+               <?php endif; ?>
+
+              <?php if ($this->session->flashdata('user_exists')) : ?>
+                    <?php
+                    echo '<p class="alert alert-danger text-center">' . $this->session->flashdata('user_exists') . '</p>';
+                    $self = $_SERVER['PHP_SELF'];
+                    header("refresh:1; url=$self");
+                    ?>
+               <?php endif; ?>
+
